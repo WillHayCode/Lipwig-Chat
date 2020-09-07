@@ -45,7 +45,7 @@ export class ChatHost {
       const pattern = callbackMap.regex;
       if (message.match(pattern)) {
         callback(chatUser, message); //TODO: There's no context handling for this
-        block = callbackMap.block && block;
+        block = callbackMap.block || block;
       }
     });
     if (!block) {
