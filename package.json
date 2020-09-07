@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Drop-in chat for Lipwig applications",
   "main": "lib/LipwigChat.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
