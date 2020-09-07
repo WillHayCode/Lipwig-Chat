@@ -1,0 +1,26 @@
+{
+  "name": "lipwig-chat",
+  "version": "0.0.1",
+  "description": "Drop-in chat for Lipwig applications",
+  "main": "lib/LipwigChat.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WillHayCode/Lipwig-Chat.git"
+  },
+  "author": "William Hayward <WillHayCode@gmail.com> (https://WillHayCode.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WillHayCode/Lipwig-Chat/issues"
+  },
+  "homepage": "https://github.com/WillHayCode/Lipwig-Chat#readme",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "lipwigjs": "1.2.3"
+  }
+}
