@@ -24,17 +24,22 @@ export class ChatHost {
     const users = host.getUsers();
     for (let userid in users) {
       const user = users[userid];
-      const chatUser = new ChatUser(user);
-      this.users[userid] = chatUser;
-      user.on('lw-chat-setname', chatUser.setName); //TODO: Check if name is taken here
+      this.add(user);
     }
-
     this.host.on('lw-chat-message', this.handle, { object: this });
+    this.host.on('joined', this.add, { object: this });
+  }
+
+  private add(user: User) {
+      const chatUser = new ChatUser(user);
+      this.users[user.id] = chatUser;
+      user.on('lw-chat-setname', chatUser.setName, { object: chatUser }); //TODO: Check if name is taken here
   }
 
   private handle(user: User, message: string): void {
     let block = false;
     const chatUser = this.users[user.id];
+    const name = chatUser.name;
     this.callbacks.forEach((callbackMap: CallbackMap) => {
       const callback = callbackMap.callback;
       const pattern = callbackMap.regex;
@@ -44,7 +49,7 @@ export class ChatHost {
       }
     });
     if (!block) {
-      this.sendToAll(chatUser.name, message);
+      this.sendToAll(name, message);
     }
   }
 
